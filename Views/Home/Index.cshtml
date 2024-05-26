@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .background {
+        background-image: url('/Images/modern.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+    }
+
+    .welcome-message {
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    @*@keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }*@
+
+    .btn-custom {
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<div class="background">
+    <div class="welcome-message">
+        <h1 class="display-4">Welcome to Our Book Store</h1>
+        <p class="black-text">Your one-stop destination to manage your book collection. Add authors, publishers, genres, and book details seamlessly.</p>
+        <a href="/Book/GetAll" class="btn-custom">List of collections.</a>
+    </div>
+</div>

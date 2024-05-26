@@ -1,0 +1,70 @@
+﻿using System;
+using BookStore.Models.Domain;
+using BookStore.Repositories.Abstract;
+
+namespace BookStore.Repositories.Implementation
+{
+    public class PublisherService : IPublisherService
+    {
+        private readonly DatabaseContext context;
+        public PublisherService(DatabaseContext context)
+        {
+            this.context = context;
+        }
+        public bool Add(Publisher Model)
+        {
+            try
+            {
+                context.Publisher.Add(Model);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool Delete(int id)
+        {
+            try
+            {
+                var data = this.FindById(id);
+                if (data == null)
+                    return false;
+                context.Publisher.Remove(data);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public Publisher FindById(int id)
+        {
+            return context.Publisher.Find(id);
+        }
+
+        public IEnumerable<Publisher> GetAll()
+        {
+            return context.Publisher.ToList();
+        }
+
+        public bool Update(Publisher Model)
+        {
+            try
+            {
+                context.Publisher.Update(Model);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+    }
+}
+
